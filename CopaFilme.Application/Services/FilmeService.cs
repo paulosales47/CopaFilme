@@ -49,7 +49,7 @@ namespace CopaFilme.Application.Services
 
             Filme[] filmesDisputaOrdenados = filmesDisputaCampeonato.OrderBy(filme => filme.Titulo).ToArray();
             Filme[] filmesVencedores = new Filme[_quantidadeFilmesCampeonato / 2];
-
+            
             for (int i = 0; i < (_quantidadeFilmesCampeonato / 2); i++)
             {
                 filmesVencedores[i] = RealizarDisputaEntreFilmes(filmesDisputaOrdenados[i], filmesDisputaOrdenados[_quantidadeFilmesCampeonato - 1 - i]);
@@ -60,12 +60,12 @@ namespace CopaFilme.Application.Services
                 filmesVencedores[i] = RealizarDisputaEntreFilmes(filmesVencedores[i], filmesVencedores[i + 1]);
             }
 
-            for (int i = 0; i < (_quantidadeFilmesCampeonato / 8); i++)
-            {
-                filmesVencedores[i] = RealizarDisputaEntreFilmes(filmesVencedores[i], filmesVencedores[i + 1]);
-            }
+            Filme vencedor = RealizarDisputaEntreFilmes(filmesVencedores[0], filmesVencedores[1]);
+            
+            if(vencedor.Id.Equals(filmesVencedores[0].Id))
+                return new Filme[] { filmesVencedores[0], filmesVencedores[1] };
 
-            return new Filme[] { filmesVencedores[0], filmesVencedores[1] };
+            return new Filme[] { filmesVencedores[1], filmesVencedores[0] };
         }
 
         private async Task<List<Filme>> ConverterIdFilmeParaFilme(IEnumerable<string> filmesSelecionados)
