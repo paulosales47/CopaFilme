@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CopaFilme.Services.API</name>
+    </assembly>
+    <members>
+        <member name="M:CopaFilme.Services.API.Controllers.FilmeController.Get">
+            <summary>
+            Retorna lista de filmes que estarão disponíveis na seleção
+            </summary>
+        </member>
+        <member name="M:CopaFilme.Services.API.Controllers.FilmeController.Post(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Realiza o processamento do campeonato, recebe como argumento uma lista de id's dos filmes selecionados
+            </summary>
+        </member>
+    </members>
+</doc>

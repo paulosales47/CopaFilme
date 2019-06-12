@@ -1,0 +1,42 @@
+<div *ngIf="filmesVencedores === undefined">
+        <app-banner-selecao></app-banner-selecao>
+
+        <div class="row">
+            <div class="col-10">
+                <p class="lead">Selecionados</p>
+                <p class="lead">{{quantidadeFilmesSelecionados}} de 8</p>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-primary float-right" (click)="GerarCampeonato()">GERAR MEU CAMPEONATO</button>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-3 mb-2 mt-1" *ngFor="let filme of filmes">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-2">
+                                <input type="checkbox" class="form-control" #filmeSelecioando [id]="filme.Id" (change)="AlterarListaSelecionados(filmeSelecioando)">
+                            </div>
+                                <div class="col-10">
+                                    <h5 class="card-title">
+                                        <label for="{{filme.Id}}">
+                                            {{filme.Titulo}}
+                                        </label>
+                                    </h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">
+                                        <label for="{{filme.Id}}">
+                                            {{filme.Ano}}
+                                        </label>
+                                    </h6>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div *ngIf="filmesVencedores !== undefined">
+    <app-filmes-vencedores [filmesVencedores]=filmesVencedores></app-filmes-vencedores>
+</div>
