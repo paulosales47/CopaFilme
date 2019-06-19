@@ -1,0 +1,48 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build-env
+WORKDIR /app
+
+
+WORKDIR /src
+
+#Arquivo da solution
+COPY CopaFilme.sln ./
+
+#Domain
+COPY CopaFilme.Domain/*.csproj ./CopaFilme.Domain/
+
+#Infra.Data
+COPY CopaFilme.Infra.Data/*.csproj ./CopaFilme.Infra.Data/
+
+#Application
+COPY CopaFilme.Application/*.csproj ./CopaFilme.Application/
+
+#Services.API
+COPY CopaFilme.Services.API/*.csproj ./CopaFilme.Services.API/
+
+#UI.Web
+COPY CopaFilme.UI.Web/*.csproj ./CopaFilme.UI.Web/
+
+#Infra.Data.Test
+COPY CopaFilme.Infra.Data.Test/*.csproj ./CopaFilme.Infra.Data.Test/
+
+#Application.Test
+COPY CopaFilme.Application.Test/*.csproj ./CopaFilme.Application.Test/
+
+#Restaurar dependencias
+RUN dotnet restore
+
+#***********************************************
+#BUILD
+#***********************************************
+
+COPY . .
+
+#Build Services.API
+WORKDIR /src/CopaFilme.Services.API
+RUN dotnet publish -c Release -o /app/out
+
+# Build da imagem
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
+WORKDIR /app
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "CopaFilme.Services.API.dll"]
