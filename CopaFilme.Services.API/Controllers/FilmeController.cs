@@ -21,9 +21,6 @@ namespace CopaFilme.Services.API.Controllers
             _filmeService = filmeService;
         }
 
-        /// <summary>
-        /// Retorna lista de filmes que estarão disponíveis na seleção
-        /// </summary>
         [HttpGet(Name = "GetFilmes")]
         [ProducesResponseType(statusCode: 200, Type = typeof(Task<ActionResult<IEnumerable<Filme>>>))]
         [ProducesResponseType(statusCode: 417, Type = typeof(Exception))]
@@ -46,9 +43,6 @@ namespace CopaFilme.Services.API.Controllers
 
         }
 
-        /// <summary>
-        /// Realiza o processamento do campeonato, recebe como argumento uma lista de id's dos filmes selecionados
-        /// </summary>
         [HttpPost(Name = "RealizarCampeonato")]
         [ProducesResponseType(statusCode: 200, Type = typeof(Task<ActionResult<IEnumerable<Filme>>>))]
         [ProducesResponseType(statusCode: 417, Type = typeof(Exception))]
