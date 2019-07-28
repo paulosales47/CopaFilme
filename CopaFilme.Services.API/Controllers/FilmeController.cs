@@ -36,7 +36,7 @@ namespace CopaFilme.Services.API.Controllers
                 if(filmes.Any())
                     return Ok(filmes);
 
-                return NotFound();
+                return NotFound("Nenhum filme encontrado");
             }
             catch (Exception ex)
             {
