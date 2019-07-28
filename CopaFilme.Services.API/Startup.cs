@@ -72,6 +72,7 @@ namespace CopaFilme.Services.API
         {
             services.AddScoped<IFilmeService, FilmeService>();
             services.AddScoped<IFilmeAPI, FilmeAPI>();
+            services.AddSingleton<IConfiguracao, Configuracao>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
