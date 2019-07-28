@@ -46,7 +46,7 @@ namespace CopaFilme.Services.API
                 {
                     Title = "API Copa Filme",
                     Description = "Documentação API Copa Filme",
-                    Version = "1.0"
+                    Version = "1.0.1"
                 });
 
                 var filePath = Path.Combine(System.AppContext.BaseDirectory, "CopaFilme.Services.API.xml");
