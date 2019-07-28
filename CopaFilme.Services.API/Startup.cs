@@ -45,7 +45,7 @@ namespace CopaFilme.Services.API
                 options.SwaggerDoc("v1.0", new Info
                 {
                     Title = "API Copa Filme",
-                    Description = "Documentação API Copa Filme",
+                    Description = "Documentação API Filme",
                     Version = "1.0.1"
                 });
 
