@@ -43,9 +43,10 @@ export class SelecaoFilmeComponent implements OnInit {
 
   GerarCampeonato(): void {
 
-    this.filmeService.RealizarCampeonato(this.filmesSelecionados).subscribe(
-      (filmesRetorno: Filme[]) => this.filmesVencedores = filmesRetorno
-    );
+    this.filmeService.RealizarCampeonato(this.filmesSelecionados)
+      .subscribe(
+        (filmesRetorno: Filme[]) => this.filmesVencedores = filmesRetorno,
+        (erro: any) => alert(erro.error));
   }
 
 
